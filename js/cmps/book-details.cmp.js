@@ -5,21 +5,20 @@ export default {
     template: `
         <section class="book-details">
             <button @click="$emit('close')">x</button>
-           <div class="section-center">
-
+            <div class="section-center">
                <img :src="imgUrl" alt="" />
-               <h2>{{book.title}}</h2>
-               <h3>{{book.subtitle}}</h3>
-               <h4 v-for="author in authors">
-                    {{book.author}}
-               </h4>
-               <h5>{{bookAge}}</h5>
-               <h5>{{pageCount}}</h5>
-               <p :class="{red:isPriceHigh,green:isPriceLow}">{{book.listPrice.amount}}{{currency}}</p>
-               <p v-if="book.listPrice.isOnSale">ON SALE!</p>
-               <long-text :txt="book.description">
+               <div class="details-content">
+                   <h2>{{book.title}}</h2>
+                   <h3>{{book.subtitle}}</h3>
+                   <h4>{{book.authors[0]}}</h4>
+                   <p :class="{red:isPriceHigh,green:isPriceLow}">{{book.listPrice.amount}}{{currency}}</p>
+                   <p class="sale" v-if="book.listPrice.isOnSale">ON SALE!</p>
+                    <h5>{{bookAge}}</h5>
+                    <h5>{{pageCount}}</h5>
+                    <long-text :txt="book.description">
+                </div>
 
-           </div>
+            </div>
         </section>
     `,
     data() {

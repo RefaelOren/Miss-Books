@@ -36,7 +36,6 @@ export default {
     computed: {
         booksToShow() {
             const regex = new RegExp(this.filterBy.title, 'i');
-            console.log(this.filterBy);
             if (
                 !this.filterBy.fromPrice &&
                 !this.filterBy.toPrice &&

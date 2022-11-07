@@ -20,15 +20,52 @@ body {
     display: flex;
     align-items: center;
     height: 10vh;
-    background-color: rebeccapurple;
+    background-color: rgb(143, 95, 190);
     color: white;
     padding: 30px 20px;
 }
 
+.app-header h1 {
+    font-family: cursive;
+}
+
+.app-header img {
+    width: 70px;
+    height: 80px;
+    margin-inline-end: 10px;
+    cursor: pointer;
+}
+
 .book-app {
+    position: relative;
     min-height: 80vh;
     background-color: rgba(228, 222, 222, 0.902);
     padding: 10px;
+}
+
+.book-filter {
+    padding: 10px;
+    text-align: start;
+}
+
+.book-filter .text-filter {
+    padding: 0.5rem;
+    width: 275px;
+    margin: 10px auto;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+.book-filter label {
+    margin-inline-end: 10px;
+}
+
+label input {
+    padding: 0.5rem;
+    width: 65px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
 }
 
 .book-list ul {
@@ -40,12 +77,13 @@ body {
 }
 
 .book-list ul li {
-    max-width: 250px;
+    max-width: 100%;
     text-align: center;
     background-color: white;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.5s;
+    margin: 0 auto;
 }
 
 .book-list ul li:hover {
@@ -54,7 +92,7 @@ body {
 }
 
 .book-list li img {
-    width: 100%;
+    max-width: 100%;
     object-fit: cover;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -67,10 +105,95 @@ body {
     gap: 10px;
 }
 
+.book-details {
+    background-color: white;
+    padding: 60px 10px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.book-details button {
+    position: absolute;
+    display: grid;
+    place-content: center;
+    margin: 1rem;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    padding: 7px 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    border: none;
+    background-color: red;
+    border-radius: 5px;
+}
+
+.book-details .section-center {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.section-center img {
+    max-width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.5);
+}
+
+.section-center .details-content {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px;
+}
+
+.details-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.details-content h4 {
+    color: rgb(169, 165, 165);
+    margin-bottom: 10px;
+}
+
+.details-content h3 {
+    margin-bottom: 10px;
+}
+
+.book-details h5 {
+    color: rgb(169, 165, 165);
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.details-content p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.details-content .sale {
+    font-size: 1.5rem;
+    color: red;
+    font-weight: 700;
+}
+
 .red {
     color: red;
 }
 
 .green {
     color: green;
+}
+
+.long-text span {
+    color: rgb(169, 165, 165);
+    cursor: pointer;
 }
