@@ -14,11 +14,6 @@ export default {
             </ul>
         </section>
     `,
-    methods: {
-        // showDetails(car) {
-        //     this.$emit('selected', book);
-        // },
-    },
 
     components: {
         bookPreview,

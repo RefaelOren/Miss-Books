@@ -4,7 +4,7 @@ export default {
            <div className="logo">
             <router-link to="/">
 
-                <img  src=".../../img/logo.png" alt="" />
+                <img  src="img/logo.png" alt="" />
             </router-link>
                <h1>Miss Books</h1>
             </div> 

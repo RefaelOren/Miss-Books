@@ -8,7 +8,7 @@ export default {
     template: `
         <section class="review-add">
             <h1>review book</h1>
-            <form>
+            <form>         
                 <input 
                     v-model="review.name" 
                     ref="name" 
@@ -32,7 +32,7 @@ export default {
                 </textarea>
                 <button @click="save">Save Review</button>
             </form>
-            <div v-if="updatedBook" className="reviews">
+            <div v-if="updatedBook" className="reviews">             
                 <ul>
                     <li v-for="review in updatedBook.reviews" 
                         :key="book.id"

@@ -58,7 +58,7 @@ export default {
 
     computed: {
         imgUrl() {
-            return `../../img/${this.book.id}.jpg`;
+            return `img/${this.book.id}.jpg`;
         },
         bookAge() {
             const diff = 2022 - this.book.publishedDate;
