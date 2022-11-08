@@ -13,7 +13,7 @@ export default {
     `,
     computed: {
         imgUrl() {
-            return `../../img/${this.book.id}.jpg`;
+            return `img/${this.book.id}.jpg`;
         },
         currency() {
             const currency = this.book.listPrice.currencyCode;
