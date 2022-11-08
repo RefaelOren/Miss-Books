@@ -7,7 +7,7 @@ export default {
     template: `
         <section v-if="book" class="book-details">
             <router-link to="/books">
-                <button class="close-btn">x</button>
+                <button class="close-btn">←</button>
             </router-link>
             <div class="section-center">
                 <img :src="imgUrl" alt="" />

@@ -7,8 +7,8 @@ export default {
     props: ['book'],
     template: `
         <section class="review-add">
-            <h1>review book</h1>
-            <form>         
+            <form @submit.prevent="save">         
+                <h1>review book</h1>
                 <input 
                     v-model="review.name" 
                     ref="name" 
@@ -30,7 +30,7 @@ export default {
                     cols="30" rows="10" 
                     placeholder="Did you liked this book?...">
                 </textarea>
-                <button @click="save">Save Review</button>
+                <button>Save Review</button>
             </form>
             <div v-if="updatedBook" className="reviews">             
                 <ul>

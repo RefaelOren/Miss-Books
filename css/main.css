@@ -166,19 +166,18 @@ label input {
 
 .book-details {
     background-color: white;
-    padding: 60px 10px;
+    padding: 10px;
     /* position: fixed; */
     width: 100%;
-    height: 75vh;
+    min-height: 75vh;
     top: 0;
     left: 0;
 }
 
 .book-details .close-btn {
-    position: absolute;
     width: 30px;
     height: 30px;
-    padding-bottom: 5px;
+    padding: 0 0.2rem;
     margin: 1rem;
     right: 0;
     top: 0;
@@ -187,7 +186,7 @@ label input {
     font-weight: 700;
     color: white;
     border: none;
-    background-color: red;
+    background-color: blue;
     border-radius: 5px;
 }
 
@@ -273,4 +272,41 @@ label input {
 }
 .fail {
     background-color: rgb(187, 104, 104);
+}
+
+.review-add {
+    display: flex;
+}
+
+.review-add * {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    list-style-type: none;
+}
+
+.review-add form {
+    background-color: rgb(233, 228, 228);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+    gap: 5px;
+}
+
+.review-add form button {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.review-add form select {
+    width: 25%;
+}
+
+@media (min-width: 653px) {
+    .review-add {
+        flex-direction: column;
+    }
 }

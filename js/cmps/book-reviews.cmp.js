@@ -2,7 +2,7 @@ export default {
     props: ['review'],
     template: `
                     <section class="book-reviews">
-                        <h2>{{review.name}}</h2>
+                        <h4>{{review.name}}</h4>
                         <h3>{{rating(review.rate)}}</h3>
                         <h4>{{review.date}}</h4>
                         <p>{{review.freeTxt}}</p>
