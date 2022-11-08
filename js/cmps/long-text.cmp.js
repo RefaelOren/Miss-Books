@@ -1,5 +1,5 @@
 export default {
-    props: ['txt'],
+    props: ['txt', 'maxLength'],
     template: `
        <section class="long-text">
            <p v-if="isShort">{{shortTxt}}...<span @click="isShort=!isShort">More</span></p>
@@ -15,7 +15,7 @@ export default {
 
     computed: {
         shortTxt() {
-            return this.txt.substring(0, 50);
+            return this.txt.substring(0, this.maxLength);
         },
     },
 };

@@ -1,28 +1,32 @@
-import { bookService } from '../services/book.service.js';
+import { bookService } from '../services/book-service.js';
 
-import bookFilter from './book-filter.cmp.js';
-import bookList from './book-list.cmp.js';
-import bookDetails from './book-details.cmp.js';
+import bookFilter from '../cmps/book-filter.cmp.js';
+import bookList from '../cmps/book-list.cmp.js';
+// import bookDetails from '../cmps/book-details.cmp.js';
 
 export default {
     template: `
     <section class="book-app">
         <book-filter @filter="filter" />
-        <book-list :books = "booksToShow" @selected="selectBook" />
-        <book-details @close="selectedBook = null"
-                      v-if="selectedBook"
-                      :book="selectedBook"        
-        />
-
+        <book-list v-if="books" 
+                  :books = "booksToShow" 
+                  @selected="selectBook"
+                   />
+       
+        
     </section>
 
     `,
     data() {
         return {
-            books: bookService.query(),
+            books: null,
             selectedBook: null,
             filterBy: {},
         };
+    },
+
+    created() {
+        this.books = bookService.query().then((books) => (this.books = books));
     },
     methods: {
         selectBook(book) {
@@ -51,10 +55,9 @@ export default {
         },
     },
 
-    created() {},
     components: {
         bookList,
-        bookDetails,
+        // bookDetails,
         bookFilter,
     },
 };

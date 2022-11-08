@@ -1,23 +1,27 @@
-import longText from './long-text.cmp.js';
+import { bookService } from '../services/book-service.js';
+
+import longText from '../cmps/long-text.cmp.js';
+import reviewAdd from '../cmps/review-add.cmp.js';
 
 export default {
-    props: ['book'],
     template: `
-        <section class="book-details">
-            <button @click="$emit('close')">x</button>
+        <section v-if="book" class="book-details">
+            <router-link to="/books">
+                <button class="close-btn">x</button>
+            </router-link>
             <div class="section-center">
-               <img :src="imgUrl" alt="" />
-               <div class="details-content">
-                   <h2>{{book.title}}</h2>
-                   <h3>{{book.subtitle}}</h3>
-                   <h4>{{book.authors[0]}}</h4>
-                   <p :class="{red:isPriceHigh,green:isPriceLow}">{{book.listPrice.amount}}{{currency}}</p>
-                   <p class="sale" v-if="book.listPrice.isOnSale">ON SALE!</p>
+                <img :src="imgUrl" alt="" />
+                <div class="details-content">
+                    <h2>{{book.title}}</h2>
+                    <h3>{{book.subtitle}}</h3>
+                    <h4>{{book.authors[0]}}</h4>
+                    <p :class="{red:isPriceHigh,green:isPriceLow}">{{book.listPrice.amount}}{{currency}}</p>
+                    <p class="sale" v-if="book.listPrice.isOnSale">ON SALE!</p>
                     <h5>{{bookAge}}</h5>
                     <h5>{{pageCount}}</h5>
-                    <long-text :txt="book.description">
+                    <long-text :book="book" :txt="book.description" :maxLength="50">
                 </div>
-
+                <review-add :book="book"/>
             </div>
         </section>
     `,
@@ -25,11 +29,19 @@ export default {
         return {
             isPriceHigh: false,
             isPriceLow: false,
+            book: null,
         };
     },
 
     created() {
-        this.checkPrice();
+        const id = +this.$route.params.id;
+        bookService.get(id).then((book) => {
+            this.book = book;
+        });
+    },
+
+    mounted() {
+        if (this.book) this.checkPrice();
     },
 
     unmounted() {
@@ -72,5 +84,6 @@ export default {
     },
     components: {
         longText,
+        reviewAdd,
     },
 };

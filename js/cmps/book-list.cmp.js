@@ -6,15 +6,18 @@ export default {
         <section class="book-list">
             <ul>
                 <li v-for="book in books" :key="book.id">
-                    <book-preview :book="book" @click="showDetails(book)" />
+                    <router-link :to="'/book/' + book.id">
+                        <book-preview :book="book" />
+                    </router-link>
+
                 </li>
             </ul>
         </section>
     `,
     methods: {
-        showDetails(car) {
-            this.$emit('selected', car);
-        },
+        // showDetails(car) {
+        //     this.$emit('selected', book);
+        // },
     },
 
     components: {

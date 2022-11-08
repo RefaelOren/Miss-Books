@@ -1,8 +1,12 @@
 'use strict';
 import { utilService } from './util.service.js';
+import { storageService } from './async-storage.service.js';
 
 export const bookService = {
     query,
+    get,
+    addReview,
+    removeReview,
 };
 
 const BOOKS_KEY = 'booksDB';
@@ -382,5 +386,28 @@ const books = [
 utilService.saveToStorage(BOOKS_KEY, books);
 
 function query() {
-    return utilService.loadFromStorage(BOOKS_KEY);
+    return storageService.query(BOOKS_KEY);
+}
+
+function get(bookId) {
+    return storageService.get(BOOKS_KEY, bookId);
+}
+
+function addReview(bookId, review) {
+    return get(bookId).then((book) => {
+        if (!book.reviews || !book.reviews.length) book.reviews = [];
+        review.id = storageService.makeId();
+        book.reviews.push(review);
+        storageService.put(BOOKS_KEY, book);
+        return Promise.resolve(book);
+    });
+}
+
+function removeReview(bookId, reviewId) {
+    return get(bookId).then((book) => {
+        const idx = book.reviews.findIndex((review) => review.id === reviewId);
+        book.reviews = book.reviews.splice(idx, 1);
+        storageService.put(BOOKS_KEY, book);
+        return Promise.resolve(book);
+    });
 }
